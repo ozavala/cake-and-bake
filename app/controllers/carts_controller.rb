@@ -6,13 +6,12 @@ class CartsController < ApplicationController
     session["cart"] = @cart.serialize
     product = Product.find params[:id]
     redirect_back(fallback_location: root_path)
-     # notice: "Added #{product.name} to cart."
   end
 
   def show
-  end 
+  end
 
-
-
-
+  def checkout
+    @order_form= OrderForm.new user: User.new
+  end
 end
