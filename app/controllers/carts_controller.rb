@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   def add
     @cart.add_item params[:id]
     session["cart"] = @cart.serialize
-    product = Product.find params[:id]
+    @product = Product.find params[:id]
     redirect_back(fallback_location: root_path)
   end
 

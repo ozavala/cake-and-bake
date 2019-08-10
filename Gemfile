@@ -50,6 +50,11 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'html2haml'
+  gem 'graphviz'
+  gem 'rails-erd'
+  gem 'annotate'
+  gem 'faker'
+  
 end
 
 group :test do
@@ -65,6 +70,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.3.1'
 gem 'autoprefixer-rails'
 gem 'haml-rails'
+#for atom config
+gem 'haml_lint', require: false
+#*****************
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'

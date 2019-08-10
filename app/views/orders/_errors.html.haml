@@ -1,0 +1,9 @@
+-if @order_form.has_errors?
+  .card 
+    .card-heading.bg-danger
+      %h6.card-title.text-center We have found some problems with your data. Please review them.
+    .card-body
+      -@order_form.user.errors.full_messages.each do |error|
+        %p
+          %strong User:
+          =error
