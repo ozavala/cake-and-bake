@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
     cart: @cart
     )
     if @order_form.save
+      notify_user
       redirect_to root_path
     else
       render 'carts/checkout'
@@ -13,6 +14,11 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def notify_user
+    @order_form.user.send_reset_password_instructions
+    OrderMailer.order_confirmation(@order_form.order).deliver
+  end
 
   def order_params
     params.require(:order_form).permit(user: [:name, :phone, :address, :city, :country, :postal_code, :email])
