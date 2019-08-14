@@ -8,20 +8,28 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-        <%= link_to 'Products', products_path %></li>
-        <li class="dropdown nav-item">
-          <%= link_to "#", data: { toggle: "dropdown" } do %>
-          Categories
-          <span class="caret"></span>
-          <%- end %>
-          <ul class="dropdown-menu">
-            <% @categories.each do |category| %>
-            <li><%= link_to category.name, category %></li>
-            <% end %>
-          </ul>
-        </li>
-      </ul>
-      <%= render 'application/cart' %>
-    </div>
-  </nav>
-</div>
+          <%= link_to 'Products', products_path %></li>
+          <li class="dropdown nav-item">
+            <%= link_to "#", data: { toggle: "dropdown" } do %>
+            Categories
+            <span class="caret"></span>
+            <%- end %>
+            <ul class="dropdown-menu">
+              <% @categories.each do |category| %>
+              <li><%= link_to category.name, category %></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+        <p class="navbar-text navbar-right">
+          <% if user_signed_in? %>
+          Logged in as <%= current_user.name %>.
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          <% else %>
+          <%= link_to "Login", new_user_session_path, class: "navbar-link" %>
+          <% end %>
+        </p>
+        <%= render 'application/cart' %>
+      </div>
+    </nav>
+  </div>
