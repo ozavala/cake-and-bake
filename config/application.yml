@@ -16,3 +16,7 @@
 SMTP_USER: 'oszavala@gmail.com'
 SMTP_PASSWORD: 'oszw2840_5'
 SMTP_ADDRESS: 'smtp.gmail.com'
+
+AWS_ACCESS_KEY: AKIAI64EQNG6TR47MELA
+AWS_SECRET_KEY: 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
+AWS_BUCKET: dev-imagenes
