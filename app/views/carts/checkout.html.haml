@@ -7,7 +7,7 @@
     %li
       %em=item.quantity
       =item.product.name
-      =item.total_price
+      =number_to_currency item.total_price
 
 %p
   %strong
@@ -16,6 +16,7 @@
 
 =form_for @order_form, url: orders_path do |f|
   =render 'orders/errors'
+
   %h3 Some of your personal details
   =f.fields_for :user, f.object.user do |u|
     .form-group
@@ -28,8 +29,15 @@
         %p.col-md-6=u.text_field :address, placeholder: "Address", class: "form-control"
         %p.col-md-3=u.text_field :postal_code, placeholder: "Postal code", class: "form-control"
         %p.col-md-3=u.text_field :city, placeholder: "City", class: "form-control"
-      %p=u.country_select :country, { priority_countries: [ 'EC', 'CO', 'PE', 'US'] }
+      %p=u.country_select :country, { priority_countries: [ 'EC', 'CO', 'PE', 'US'] }, { class: 'form-control' }
 
       %p=u.text_field :phone, class: 'form-control', placeholder: 'Phone'
 
+  #dropin
+
   %p=f.submit 'Place oder', class: 'btn btn-primary'
+
+:javascript
+  braintree.setup("#{@client_token}", 'dropin', {
+    container: 'dropin'
+  });

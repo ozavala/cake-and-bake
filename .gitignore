@@ -27,4 +27,8 @@
 /config/master.key
 
 # Ignore application configuration
-#/config/application.yml
+/config/application.yml
+
+/config/credentials.yml.enc
+
+/config/database.yml

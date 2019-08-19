@@ -15,6 +15,12 @@ class OrderForm
     end
   end
 
+  def has_errors?
+    user.errors.any?
+  end
+
+  private
+
   def valid?
     user.valid?
   end
@@ -25,12 +31,6 @@ class OrderForm
 
     build_order_items
   end
-
-  def has_errors?
-    user.errors.any?
-  end
-
-  private
 
   def set_password_for_user
     user.password = Digest::SHA1.hexdigest(user.email + Time.now.to_s)[0..8]
