@@ -19,12 +19,12 @@
 #
 
 class User < ApplicationRecord
-  has_many :orders, dependent: :destroy
+  # has_many :orders, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates_presence_of :name, :address, :city, :country, :postal_code
+   validates_presence_of :name
 
     def full_address
   <<~EOF
